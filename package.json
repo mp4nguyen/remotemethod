@@ -1,6 +1,6 @@
 {
   "name": "remotemethod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "pretest": "jshint ."
@@ -12,10 +12,10 @@
     "portfinder": "^1.0.3",
     "util": "^0.10.3"
   },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/mp4nguyen/remotemethod.git"
-    },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mp4nguyen/remotemethod.git"
+  },
   "description": "remote method to help one node.js server call a method from another node.js server. Support to build node.js microservices",
   "author": "Phuong Nguyen <mp4nguyen@gmail.com> "
 }
