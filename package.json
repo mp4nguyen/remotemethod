@@ -1,0 +1,17 @@
+{
+  "name": "remotemethod",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "jshint ."
+  },
+  "dependencies": {
+    "axon": "^2.0.2",
+    "eventemitter2": "^1.0.0",
+    "node-discover": "^0.5.0",
+    "portfinder": "^1.0.3",
+    "util": "^0.10.3"
+  },
+  "description": "remote method to help one node.js server call a method from another node.js server. Support to build node.js microservices",
+  "author": "Phuong Nguyen <mp4nguyen@gmail.com> "
+}

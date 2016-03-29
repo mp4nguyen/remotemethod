@@ -1,0 +1,21 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sakila": {
+    "host": "localhost",
+    "port": 3307,
+    "database": "sakila",
+    "password": "root",
+    "name": "sakila",
+    "connector": "mysql",
+    "user": "root"
+  },
+    "mongodb": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "test",
+        "connector": "mongodb"
+    }
+}
