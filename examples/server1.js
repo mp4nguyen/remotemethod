@@ -12,7 +12,7 @@ if(res){
         console.log("worker.process.pid = " + process.pid,req);
         setTimeout(function(){
             cb("worker.process.pid = " + process.pid + " has a msg = " + req.toString() + " para = " + req.para.id)
-        },2000);
+        },10);
     });
 }
 

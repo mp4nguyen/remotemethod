@@ -7,7 +7,7 @@ var req = new remoteMethod.Requester();
 var id = 0;
 
 req.on('ready',function(req,cb){
-    console.log('ready = ',req);
+//    console.log('ready = ',req);
 });
 
 setInterval(function(){
