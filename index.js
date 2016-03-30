@@ -1,41 +1,23 @@
 /**
  * Created by phuongnguyen on 29/03/16.
  */
-var Discovery = require('./lib/discovery.js'),
+var
     Requester = require('./lib/requester.js'),
-    Responder = require('./lib/responder.js');
+    Responder = require('./lib/responder.js'),
+    ClusterResponder = require('./lib/clusterresponder.js'),
+    ResponderForCluster = require('./lib/responderforcluster.js'),
+    Discovery = require('./lib/discovery.js');
 
 //    TimeBalancedRequester = require('./lib/TimeBalancedRequester.js'),
 //    PendingBalancedRequester = require('./lib/PendingBalancedRequester.js');
 
-function cote(options) {
-    /*
-    var environment = options.environment || '';
+var remoteMethod = {};
 
-    var components = [Requester, Responder, Publisher, Subscriber, Sockend, TimeBalancedRequester,
-        PendingBalancedRequester];
+remoteMethod.Requester = Requester;
+remoteMethod.Responder = Responder;
+remoteMethod.Discovery = Discovery;
+remoteMethod.ClusterResponder = ClusterResponder;
+remoteMethod.ResponderForCluster = ResponderForCluster;
 
-    components.forEach(function(component) {
-        component.setEnvironment(environment);
-    });
-
-    Discovery.setDefaults(options);
-    */
-    return cote;
-}
-
-cote.Requester = Requester;
-cote.Responder = Responder;
-cote.Discovery = Discovery;
-
-/*
-cote.Publisher = Publisher;
-cote.Subscriber = Subscriber;
-cote.Sockend = Sockend;
-cote.Monitor = Monitor;
-cote.TimeBalancedRequester = TimeBalancedRequester;
-cote.PendingBalancedRequester = PendingBalancedRequester;
-*/
-
-module.exports = cote;
+module.exports = remoteMethod;
 
