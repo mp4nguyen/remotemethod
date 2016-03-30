@@ -2,7 +2,7 @@
  * Created by phuongnguyen on 22/03/16.
  */
 var cluster = require('cluster');
-var remoteMethod = require('./index');
+var remoteMethod = require('./../index');
 var req = new remoteMethod.Requester();
 var id = 0;
 
