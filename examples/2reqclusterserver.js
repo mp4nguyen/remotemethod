@@ -9,7 +9,7 @@ clusterOptions.numberOfWorkers = 4;
 var master = function(workers){
     console.log('I am a master...');
     var RequestMaster = remoteMethod.RequesterMaster;
-    var r1 = new RequestMaster({serviceName:'res1'},workers,9000);
+    var r1 = new RequestMaster({serviceName:'res1'},workers,8000);
     var r2 = new RequestMaster({serviceName:'res2'},workers,9000);
 };
 
