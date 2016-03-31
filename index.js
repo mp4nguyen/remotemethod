@@ -10,6 +10,15 @@ var
     RequesterForCluster = require('./lib/requesterforcluster.js'),
     Discovery = require('./lib/discovery.js');
 
+    Cluster = require('./lib/cluster.js');
+
+    RequesterMaster = require('./lib/requestermaster.js');
+    RequesterWorker = require('./lib/requesterworker.js');
+
+    ResponderMaster = require('./lib/respondermaster.js');
+    ResponderWorker = require('./lib/responderworker.js');
+
+
 //    TimeBalancedRequester = require('./lib/TimeBalancedRequester.js'),
 //    PendingBalancedRequester = require('./lib/PendingBalancedRequester.js');
 
@@ -22,6 +31,15 @@ remoteMethod.ClusterResponder = ClusterResponder;
 remoteMethod.ResponderForCluster = ResponderForCluster;
 remoteMethod.RequesterForCluster = RequesterForCluster;
 remoteMethod.ClusterRequester = ClusterRequester;
+
+remoteMethod.Cluster = Cluster;
+
+remoteMethod.RequesterMaster = RequesterMaster;
+remoteMethod.RequesterWorker = RequesterWorker;
+
+remoteMethod.ResponderMaster = ResponderMaster;
+remoteMethod.ResponderWorker = ResponderWorker;
+
 
 module.exports = remoteMethod;
 
