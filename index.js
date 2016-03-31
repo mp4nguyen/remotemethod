@@ -4,10 +4,6 @@
 var
     Requester = require('./lib/requester.js'),
     Responder = require('./lib/responder.js'),
-    ClusterResponder = require('./lib/clusterresponder.js'),
-    ClusterRequester = require('./lib/clusterrequest.js'),
-    ResponderForCluster = require('./lib/responderforcluster.js'),
-    RequesterForCluster = require('./lib/requesterforcluster.js'),
     Discovery = require('./lib/discovery.js');
 
     Cluster = require('./lib/cluster.js');
@@ -27,10 +23,6 @@ var remoteMethod = {};
 remoteMethod.Requester = Requester;
 remoteMethod.Responder = Responder;
 remoteMethod.Discovery = Discovery;
-remoteMethod.ClusterResponder = ClusterResponder;
-remoteMethod.ResponderForCluster = ResponderForCluster;
-remoteMethod.RequesterForCluster = RequesterForCluster;
-remoteMethod.ClusterRequester = ClusterRequester;
 
 remoteMethod.Cluster = Cluster;
 
