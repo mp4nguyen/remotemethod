@@ -19,20 +19,23 @@ It supports cluster and multiple servers.
 ### Requester server
 
 Requester server needs to make requests from 2 services that are in different servers
+
 Let assume that there are 2 services : res1 and res2
+
 One service can serve many service type.
+
 In res1, has service type is 'hello'
+
 In res2, has service type is 'hello2'
- 
+
+'''js 
 var remoteMethod = require('RemoteMethod');
 var req1 = new remoteMethod.Requester({serviceName:'res1'});
 var req2 = new remoteMethod.Requester({serviceName:'res2'});
 var id = 0;
 
 setInterval(function(){
-    id++;
-    console.log("sending a req.");
-    
+    id++;    
     req1.send({type:'hello', para: {id:id}}, function(res){
         console.log(res);
     });
@@ -42,9 +45,11 @@ setInterval(function(){
     });
         
 }, 1000);
+'''
 
 ### Responder server 1:
 
+'''js
 var remoteMethod = require('RemoteMethod');
 var Responder = remoteMethod.Responder;
 var res = new Responder({serviceName:'res1'});
@@ -57,9 +62,11 @@ if(res){
         },10);
     });
 }
+'''
 
 ### Responder server 2:
 
+'''js
 var remoteMethod = require('RemoteMethod');
 var Responder = remoteMethod.Responder;
 var res = new Responder({serviceName:'res2'});
@@ -72,56 +79,46 @@ if(res){
         },10);
     });
 }
+'''
 
 ## Cluster server
 
 ### Requester server
 
+'''js
 var remoteMethod = require('RemoteMethod');
 var clusterOptions = {};
 
 clusterOptions.numberOfWorkers = 4;
 
 var master = function(workers){
-    console.log('I am a master...');
     var RequestMaster = remoteMethod.RequesterMaster;
     var r1 = new RequestMaster({serviceName:'res1'},workers,8000);
     var r2 = new RequestMaster({serviceName:'res2'},workers,9000);
 };
 
-var worker = function(){
-    console.log('I am a worker...');
-    
+var worker = function(){        
     var RequesterWorker = remoteMethod.RequesterWorker;
     var req = new RequesterWorker({serviceName:'res1'});
-    var req2 = new RequesterWorker({serviceName:'res2'});
-    
+    var req2 = new RequesterWorker({serviceName:'res2'});    
     var http = require('http');
     var id = 0;
-
     //Lets define a port we want to listen to
     const PORT=8080;
-
     //We need a function which handles requests and send response
     function handleRequest(request, response){
-
         console.log("sending a req at " + process.pid + "   id = " + id + "   request.url = " , request.url );
         id++
         req.send({type:'hello', para: {id:id,pid:process.pid,url:request.url}}, function(res){
             console.log(res);
         });
-
         req2.send({type:'hello2', para: {id:id,pid:process.pid,url:request.url}}, function(res){
             console.log(res);
         });
-
         response.end('It Works!! Path Hit: ' + request.url);
-
     }
-
     //Create a server
     var server = http.createServer(handleRequest);
-
     //Lets start our server
     server.listen(PORT, function(){
         //Callback triggered when server is successfully listening. Hurray!
@@ -130,23 +127,22 @@ var worker = function(){
 };
 
 var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
+'''
 
 ### Responder server
 
+'''js
 var remoteMethod = require('./../index');
 var clusterOptions = {};
 
 clusterOptions.numberOfWorkers = 4;
 
 var master = function(workers){
-    console.log('I am a master...');
     var ResponderMaster = remoteMethod.ResponderMaster;
     var req = new ResponderMaster({serviceName:'res1'},workers);
 };
 
 var worker = function(){
-    console.log('I am a worker...');
-
     // Receive messages from the master process.
     var ResponderWorker = remoteMethod.ResponderWorker;
     var res = new ResponderWorker({serviceName:'res1'});
@@ -161,7 +157,7 @@ var worker = function(){
 };
 
 var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
-
+'''
 
 ## Authors
 
