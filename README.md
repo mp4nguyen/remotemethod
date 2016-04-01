@@ -16,6 +16,17 @@ It supports cluster and multiple servers.
      
 ## Single thread call single thread
 
+the source code is placed in example folder
+
+requester server <-> responder servers
+
+requester server: 
+    - requesterserver.js
+
+responder servers:
+    - responderserver.js
+    - responderserver2.js
+
 ### Requester server
 
 Requester server needs to make requests from 2 services that are in different servers
@@ -27,6 +38,7 @@ One service can serve many service type.
 In res1, has service type is 'hello'
 
 In res2, has service type is 'hello2'
+
 
 ```js
 var remoteMethod = require('RemoteMethod');
@@ -84,6 +96,21 @@ if(res){
 
 ## Cluster server
 
+the source code is placed in example folder
+
+send request server -> cluster requester server <-> cluster responder servers
+
+send a request server: this is api consumer, will call the api from cluster requester server
+    - 2sendrequestserver.js
+    
+cluster requester server: provide apis, and run on cluster with 4 workers. the api request will be distributed the workers automatically 
+    - 2reqclusterserver.js
+
+cluster responder servers: will process any request from cluster request server. ther are 2 services, and each service is processed each server.
+Each server will has 4 workers to do the response 
+    - 2resclusterserver.js
+    - 2resclusterserver2.js
+    
 ### Requester server
 
 ```js
