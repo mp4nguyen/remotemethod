@@ -28,7 +28,7 @@ In res1, has service type is 'hello'
 
 In res2, has service type is 'hello2'
 
-'''js 
+```js
 var remoteMethod = require('RemoteMethod');
 var req1 = new remoteMethod.Requester({serviceName:'res1'});
 var req2 = new remoteMethod.Requester({serviceName:'res2'});
@@ -45,11 +45,12 @@ setInterval(function(){
     });
         
 }, 1000);
-'''
+```
+
 
 ### Responder server 1:
 
-'''js
+```js
 var remoteMethod = require('RemoteMethod');
 var Responder = remoteMethod.Responder;
 var res = new Responder({serviceName:'res1'});
@@ -62,11 +63,11 @@ if(res){
         },10);
     });
 }
-'''
+```
 
 ### Responder server 2:
 
-'''js
+```js
 var remoteMethod = require('RemoteMethod');
 var Responder = remoteMethod.Responder;
 var res = new Responder({serviceName:'res2'});
@@ -79,13 +80,13 @@ if(res){
         },10);
     });
 }
-'''
+```
 
 ## Cluster server
 
 ### Requester server
 
-'''js
+```js
 var remoteMethod = require('RemoteMethod');
 var clusterOptions = {};
 
@@ -127,11 +128,11 @@ var worker = function(){
 };
 
 var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
-'''
+```
 
 ### Responder server
 
-'''js
+```js
 var remoteMethod = require('./../index');
 var clusterOptions = {};
 
@@ -157,7 +158,7 @@ var worker = function(){
 };
 
 var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
-'''
+```
 
 ## Authors
 
