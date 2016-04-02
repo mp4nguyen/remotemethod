@@ -196,7 +196,7 @@ var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
 
   MIT
 
-Copyright (c) 2012-2013 Phuong Nguyen <mp4nguyen@gmail.com>
+Copyright (c) 2016-2016 Phuong Nguyen <mp4nguyen@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

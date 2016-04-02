@@ -1,7 +1,7 @@
 /**
  * Created by phuongnguyen on 30/03/16.
  */
-var remoteMethod = require('./../index');
+var remoteMethod = require('./../../index');
 var clusterOptions = {};
 
 clusterOptions.numberOfWorkers = 4;

@@ -2,10 +2,10 @@
  * Created by phuongnguyen on 22/03/16.
  */
 
-var remoteMethod = require('./../index');
+var remoteMethod = require('./../../index');
 var req1 = new remoteMethod.Requester({serviceName:'res1'});
 var req2 = new remoteMethod.Requester({serviceName:'res2'});
-var id = 0;
+var id = 100000000;
 
 setInterval(function(){
     //sock.send('hello');
@@ -19,6 +19,6 @@ setInterval(function(){
         console.log(res);
     });
 
-}, 1000);
+}, 100000);
 
 
