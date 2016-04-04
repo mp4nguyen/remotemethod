@@ -8,13 +8,13 @@ It will automatically discover services in internal network.
  
 It supports cluster and multiple servers.
 
-## Installation
+## 1. Installation
 
     $ npm install remotemethod
     
     $ npm install https://github.com/mp4nguyen/remotemethod.git
      
-## Single thread call single thread
+## 2. Single thread call single thread
 
 the source code is placed in example folder
 
@@ -27,7 +27,7 @@ responder servers:
     - responderserver.js
     - responderserver2.js
 
-### Requester server
+### 2.1. Requester server
 
 Requester server needs to make requests from 2 services that are in different servers
 
@@ -60,7 +60,9 @@ setInterval(function(){
 ```
 
 
-### Responder server 1:
+### 2.2. Responder server:
+
+### 2.2.1 Responder server 1:
 
 ```js
 var remoteMethod = require('RemoteMethod');
@@ -77,7 +79,7 @@ if(res){
 }
 ```
 
-### Responder server 2:
+### 2.2.2 Responder server 2:
 
 ```js
 var remoteMethod = require('RemoteMethod');
@@ -94,7 +96,7 @@ if(res){
 }
 ```
 
-## Cluster server
+## 3. Cluster server
 
 the source code is placed in example folder
 
@@ -111,7 +113,7 @@ Each server will has 4 workers to do the response
     - 2resclusterserver.js
     - 2resclusterserver2.js
     
-### Requester server
+### 3.1 Requester server
 
 ```js
 var remoteMethod = require('RemoteMethod');
@@ -157,7 +159,7 @@ var worker = function(){
 var cluster = new remoteMethod.Cluster(clusterOptions,master,worker);
 ```
 
-### Responder server
+### 3.2. Responder server
 
 ```js
 var remoteMethod = require('./../index');
