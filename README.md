@@ -16,6 +16,26 @@ It supports cluster and multiple servers.
      
 ## 2. Single thread call single thread
 
+ * requester class:
+    - var remoteMethod = require('RemoteMethod');
+    
+    - var req1 = new remoteMethod.Requester({serviceName:<servicename that the requester needs>});
+    
+    - req1.send({type:<type of service providing by responder>, para: <object of parameter will send to the responder>}, cb );
+
+ * responder class:
+    - var remoteMethod = require('RemoteMethod');
+    
+    - var Responder = remoteMethod.Responder;
+    
+    - var res = new Responder({serviceName:<serviceName that the responder will provide to requesters>});
+
+    - res.on(<type of service>, cb(req, cb));
+        
+        + res: is an object that requester send to responder including: Type of request and parameter
+        
+        + cb: return the value to the requester
+    
 the source code is placed in example folder
 
 requester server <-> responder servers
@@ -98,6 +118,61 @@ if(res){
 
 ## 3. Cluster server
 
+    * CLuster class:
+    
+    - var remoteMethod = require('RemoteMethod');
+        
+    - var cluster = new remoteMethod.Cluster(clusterOptions,master,worker):
+    
+        + clusterOptions is an object with clusterOptions.numberOfWorkers: define the number of worker will run in the server
+        
+        + master: is a function that will run on the master
+        
+        + worker: is a function that will run on the worker
+    
+    * RequesterMaster class: is a class that must run on the master function of the cluster
+        - var RequestMaster = remoteMethod.RequesterMaster;
+        
+        - var r1 = new RequestMaster(reqInfo,workers,port):
+        
+            + reqInfo: is an object that define the service name : {serviceName:'res1'}
+            
+            + workers: is array of workers that is given by master function
+            
+            + port: this is starting port that the requester will search the available port from that
+        
+    * RequesterWorker class:
+    
+        - var RequesterWorker = remoteMethod.RequesterWorker;
+               
+        - var req = new remoteMethod.RequesterWorker({serviceName:<servicename that the requester needs>});
+            
+        - req.send({type:<type of service providing by responder>, para: <object of parameter will send to the responder>}, cb(res) );
+        
+    * ResponderMaster class:
+    
+        - var ResponderMaster = remoteMethod.ResponderMaster;
+        
+        - var req = new ResponderMaster(resInfo,workers):
+        
+            + resInfo: is an object that define the service name : {serviceName:'res1'}
+            
+            + workers: is array of workers that is given by master function        
+        
+    * ResponderWorker class:
+    
+        - var remoteMethod = require('RemoteMethod');
+        
+        - var Responder = remoteMethod.ResponderWorker;
+        
+        - var res = new ResponderWorker({serviceName:<serviceName that the responder will provide to requesters>});
+    
+        - res.on(<type of service>, cb(req, cb));
+            
+            + res: is an object that requester send to responder including: Type of request and parameter
+            
+            + cb: return the value to the requester
+            
 the source code is placed in example folder
 
 send request server -> cluster requester server <-> cluster responder servers
